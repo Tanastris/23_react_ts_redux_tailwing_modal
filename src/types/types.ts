@@ -1,4 +1,4 @@
-export type InitTodos = {
+export type TodoType = {
   id: number;
   title: string;
   isDone: boolean;
