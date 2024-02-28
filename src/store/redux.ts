@@ -14,9 +14,22 @@ export const initTodos: InitTodosState = {
   ],
 };
 
-export const store = configureStore({
-  reducer: {},
+const todosSlice = createSlice({
+  name: 'todos',
+  initialState: initTodos,
+  reducers: {
+    addTodo() {},
+    deleteTodo() {},
+  },
 });
+
+export const store = configureStore({
+  reducer: {
+    todos: todosSlice.reducer,
+  },
+});
+
+export todoActions = todosSlice.actions;
 
 // Infer the `RootState` and `AppDispatch` types from the store itself
 export type RootState = ReturnType<typeof store.getState>;
