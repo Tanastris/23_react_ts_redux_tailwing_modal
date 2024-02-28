@@ -1,7 +1,8 @@
 /* eslint-disable no-case-declarations */
-import { useReducer, useState } from 'react';
 import OneTodo from './OneTodo';
 import AddTodo from './AddTodo';
+import { useSelector } from 'react-redux';
+import { RootState } from '../../store/redux';
 
 // aprasyti tipa initTodos
 
@@ -32,6 +33,8 @@ export default function TodoApp() {
   // pasitikrinti ar turiu todos localStorage, jei turiu imu is storage, jei ne initTodos
   // const [state, dispach] = useReducer(todoReducer, initTodos);
 
+  const state = useSelector((state: RootState) => state.todos.todosArr);
+
   // console.log('state ===', state);
 
   const handleDelete = (idToDelete) => {
@@ -50,9 +53,9 @@ export default function TodoApp() {
 
   // const handleUpdate = () => {};
 
-  // const all = state.length;
+  const all = state.length;
 
-  // const complete = state.filter((tObj) => tObj.isDone).length;
+  const complete = state.filter((tObj) => tObj.isDone).length;
 
   return (
     <div>

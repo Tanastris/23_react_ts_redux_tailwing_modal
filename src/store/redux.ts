@@ -1,12 +1,12 @@
 import { InitTodos } from '../types/types';
-import { configureStore } from '@reduxjs/toolkit';
+import { configureStore, createSlice } from '@reduxjs/toolkit';
 
 type InitTodosState = {
-  todos: InitTodos[];
+  todosArr: InitTodos[];
 };
 
 export const initTodos: InitTodosState = {
-  todos: [
+  todosArr: [
     { id: 1, title: 'Pull ups', isDone: false },
     { id: 2, title: 'Read a book', isDone: true },
     { id: 3, title: 'Buy Bread', isDone: false }, // idToToggle === 3
@@ -29,7 +29,7 @@ export const store = configureStore({
   },
 });
 
-export todoActions = todosSlice.actions;
+export const todoActions = todosSlice.actions;
 
 // Infer the `RootState` and `AppDispatch` types from the store itself
 export type RootState = ReturnType<typeof store.getState>;
