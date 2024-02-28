@@ -1,4 +1,4 @@
-import Button from '../counter/UI/Button';
+import Button from '../UI/Button';
 
 export default function OneTodo({ item, onDelete, onDone }) {
   return (
@@ -6,8 +6,10 @@ export default function OneTodo({ item, onDelete, onDone }) {
       <div className=''>
         <span
           className={
-            'font-semibold text-lg ' + `${item.isDone ? 'line-through text-gray-400' : ''}`
-          }>
+            'font-semibold text-lg ' +
+            `${item.isDone ? 'line-through text-gray-400' : ''}`
+          }
+        >
           {' '}
           {item.title}
         </span>

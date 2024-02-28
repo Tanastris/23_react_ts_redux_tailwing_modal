@@ -1,6 +1,5 @@
 /* eslint-disable no-case-declarations */
 import { useReducer, useState } from 'react';
-import Button from '../counter/UI/Button';
 import OneTodo from './OneTodo';
 import AddTodo from './AddTodo';
 
@@ -28,7 +27,10 @@ function todoReducer(state, action) {
       localStorage.setItem('todos', JSON.stringify(filtered));
       return filtered;
     case ACT.add:
-      return [...state, { id: countId++, title: action.payload, isDone: false }];
+      return [
+        ...state,
+        { id: countId++, title: action.payload, isDone: false },
+      ];
     // pasidaryti make done (sunkesnis)
     case ACT.toggle:
       const idToToggle = action.payload;
@@ -78,9 +80,14 @@ export default function TodoApp() {
       <AddTodo onNewTodo={handleNewTodo} />
 
       <ul className='flex flex-col gap-3 '>
-         {state.length === 0 && <p className='text-lg'>No todos</p>}
+        {state.length === 0 && <p className='text-lg'>No todos</p>}
         {state.map((tObj) => (
-          <OneTodo onDelete={handleDelete} onDone={handleDone} key={tObj.id} item={tObj} />
+          <OneTodo
+            onDelete={handleDelete}
+            onDone={handleDone}
+            key={tObj.id}
+            item={tObj}
+          />
         ))}
       </ul>
     </div>
