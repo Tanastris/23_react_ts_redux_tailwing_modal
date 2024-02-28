@@ -1,8 +1,9 @@
-import { InitTodos } from '../types/types';
 import { configureStore, createSlice } from '@reduxjs/toolkit';
+import { TodoType } from '../types/types';
+import type { PayloadAction } from '@reduxjs/toolkit';
 
 type InitTodosState = {
-  todosArr: InitTodos[];
+  todosArr: TodoType[];
 };
 
 export const initTodos: InitTodosState = {
@@ -19,7 +20,12 @@ const todosSlice = createSlice({
   initialState: initTodos,
   reducers: {
     addTodo() {},
-    deleteTodo() {},
+    deleteTodo(state, action: PayloadAction<number>) {
+      console.log('deleteTodo action is called', action.payload);
+      state.todosArr = state.todosArr.filter(
+        (tObj) => tObj.id !== action.payload
+      );
+    },
   },
 });
 
