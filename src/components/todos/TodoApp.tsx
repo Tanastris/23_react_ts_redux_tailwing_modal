@@ -2,13 +2,9 @@
 import { useReducer, useState } from 'react';
 import OneTodo from './OneTodo';
 import AddTodo from './AddTodo';
+import { initTodos } from '../../store/redux';
 
-const initTodos = [
-  { id: 1, title: 'Pull ups', isDone: false },
-  { id: 2, title: 'Read a book', isDone: true },
-  { id: 3, title: 'Buy Bread', isDone: false }, // idToToggle === 3
-  { id: 4, title: 'Buy Bread', isDone: true }, // id to dele
-];
+// iskelti initTodoss i store/redux.ts
 
 let countId = 5;
 
